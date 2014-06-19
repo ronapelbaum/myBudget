@@ -1,7 +1,7 @@
 <h4>Query</h4>
 <input ng-model="filterProp" class="form-control">
 <br/>
-<table class="table table-hover table-responsive">
+<table class="table table-hover">
     <thead>
     <tr>
         <td class="clickable" ng-click="setOrder('date')">Date</td>
@@ -10,10 +10,11 @@
     </tr>
     </thead>
     <tbody>
-    <tr ng-repeat="expense in expensesList | orderBy : orderProp | filter: filterProp">
+    <tr ng-repeat="expense in expensesList | orderBy : orderProp | filter: filterProp"
+        ng-mouseenter="show = true" ng-mouseleave="show = false">
         <td>{{expense.date| date : 'dd-MM-yyyy'}}</td>
         <td class="clickable" ng-click="setFilter(expense.category)">{{expense.category}}</td>
-        <td ng-click="edit(expense.id)">{{expense.amount}}</td>
+        <td> {{expense.amount}} <span class="glyphicon glyphicon-pencil pull-right"  ng-show="show" ng-click="edit(expense.id)"></span></td>
     </tr>
     </tbody>
 </table>
