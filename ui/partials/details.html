@@ -9,17 +9,17 @@
 
     <h4>Date</h4>
     <section class="input-group">
-        <input type="text" class="form-control" placeholder="date" ng-model="expense.date" ng-required="true"
+        <input type="text" class="form-control pull-right" placeholder="date" ng-model="expense.date" ng-required="true"
                datepicker-popup="dd.MM.yyyy" is-open="opened">
         <span class="input-group-btn right">
-                <button type="button" class="btn btn-default" ng-click="open($event)"><i
+                <button type="button" class="btn btn-default " ng-click="open($event)"><i
                         class="glyphicon glyphicon-calendar"></i></button>
               </span>
     </section>
     <br/>
-    <section class="btn-panel ">
-        <button type="submit" class="btn btn-lg btn-primary" ng-click="save()">Save</button>
+    <section class="btn-panel pull-right">
         <button type="button" class="btn btn-lg btn-danger" ng-click="remove()" ng-show="expense.id">Delete</button>
+        <button type="submit" class="btn btn-lg btn-primary" ng-click="save()">Save</button>
     </section>
 </form>
 
