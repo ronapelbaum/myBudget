@@ -1,0 +1,5 @@
+<ul class="nav nav-tabs">
+    <li ng-repeat="page in pages" ng-class="{active:isActive(page.route)}">
+        <a href="#{{page.route}}">{{page.name}}</a>
+    </li>
+</ul>

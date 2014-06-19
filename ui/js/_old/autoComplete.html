@@ -1,0 +1,11 @@
+<section class="autocomplete">
+    <input type="text" ng-model="searchParam" placeholder="{{placeholder||'type...'}}" autofocus>
+    <ul ng-show="(searchParam || selected >= 0)">
+        <li ng-repeat="option in options | filter:searchParam track by $index"
+            index="{{ $index }}"
+            ng-class="{ active: ($index === selected) }">
+            {{option}}
+        </li>
+    </ul>
+    {{selected}}
+</section>

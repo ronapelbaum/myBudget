@@ -1,0 +1,19 @@
+<h4>Query</h4>
+<input ng-model="filterProp" class="form-control">
+<br/>
+<table class="table table-hover table-responsive">
+    <thead>
+    <tr>
+        <td class="clickable" ng-click="setOrder('date')">Date</td>
+        <td class="clickable" ng-click="setOrder('category')">Category</td>
+        <td>Amount</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="expense in expensesList | orderBy : orderProp | filter: filterProp">
+        <td>{{expense.date| date : 'dd-MM-yyyy'}}</td>
+        <td class="clickable" ng-click="setFilter(expense.category)">{{expense.category}}</td>
+        <td ng-click="edit(expense.id)">{{expense.amount}}</td>
+    </tr>
+    </tbody>
+</table>

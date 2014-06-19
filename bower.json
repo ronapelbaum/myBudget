@@ -1,0 +1,12 @@
+{
+    "name": "expense",
+    "version": "0.0.1",
+    "private": true,
+    "dependencies": {
+        "angular": "1.2.x",
+        "angular-route": "1.2.x",
+        "angular-bootstrap": "0.11.0",
+        "bootstrap": "3.x"
+
+    }
+}

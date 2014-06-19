@@ -1,0 +1,25 @@
+.autocomplete{
+    width: 100%;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    display: inline;
+}
+.autocomplete ul{
+    position: absolute;
+    border-left: 1px solid #888;
+    border-right: 1px solid #888;
+    border-bottom: 1px solid #888;
+    background: #fff;
+    z-index: 10;
+}
+
+.autocomplete li{
+    width: 100%;
+    list-style: none;
+    text-align: center;
+}
+
+.autocomplete li.active{
+    background: lightblue;
+}

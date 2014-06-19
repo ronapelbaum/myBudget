@@ -1,0 +1,15 @@
+<h4>Query</h4>
+<input ng-model="filterProp" class="form-control">
+<br/>
+<table class="table">
+    <tr>
+        <td></td>
+        <td ng-repeat="column in pivot.columns ">{{column}}</td>
+    </tr>
+    <tr ng-repeat="row in pivot.rows | filter: filterProp">
+        <td>{{row}}</td>
+        <td ng-repeat="column in pivot.columns">{{ pivot.table[row][column]}}</td>
+    </tr>
+</table>
+
+

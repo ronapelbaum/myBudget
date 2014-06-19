@@ -1,0 +1,14 @@
+/*add for bootstrap*/
+.nav, .pagination, .carousel, .panel-title a {
+    cursor: pointer;
+}
+
+/*finish*/
+
+.btn-panel {
+    right: 0px;
+}
+
+.clickable {
+    cursor: pointer;
+}
