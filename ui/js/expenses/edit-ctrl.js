@@ -54,6 +54,6 @@ angular.module('expenses_module').controller('editExpenseCtrl', ['$scope', '$htt
         $event.preventDefault();
         $event.stopPropagation();
 
-        $scope.opened = true;
+        $scope.opened = !!!$scope.opened;
     };
 }]);
