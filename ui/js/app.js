@@ -3,13 +3,13 @@
  */
 var appModules = [
     'ngRoute',
-    'expenses_module',
+    'myBudget_module',
     'util_module',
     'ui.bootstrap'
 ];
-var expenses_app = angular.module('expenses_app', appModules);
+var myBudget_app = angular.module('myBudget_app', appModules);
 
-expenses_app.config(['$routeProvider',
+myBudget_app.config(['$routeProvider',
     function ($routeProvider) {
         $routeProvider.
             when('/', {

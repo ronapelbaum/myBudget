@@ -1,7 +1,7 @@
 /**
  * Created by apelbaur on 6/22/2014.
  */
-angular.module('expenses_module').controller('expBalanceCtrl', ['$scope', '$http', function ($scope, $http) {
+angular.module('myBudget_module').controller('expBalanceCtrl', ['$scope', '$http', function ($scope, $http) {
     $scope.today = new Date();
     $scope.sumIncome = 0;
     $scope.sumExpenses = 0;

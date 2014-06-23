@@ -1,7 +1,7 @@
 /**
  * Created by apelbaur on 6/19/2014.
  */
-angular.module('expenses_module').controller('expPivotCtrl', ['$scope', '$http', '$filter' , function ($scope, $http, $filter) {
+angular.module('myBudget_module').controller('expPivotCtrl', ['$scope', '$http', '$filter' , function ($scope, $http, $filter) {
     var expenses = [];
     $scope.pivot = {};
     $http.get('/getAllRecords', {params: {table: 'expenses'}}).
