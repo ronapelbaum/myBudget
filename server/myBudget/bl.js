@@ -31,5 +31,21 @@ router.get('/getCategoriesList', function (req, res) {
         res.send(data);
     });
 });
+//--- income
+router.post('/addIncome', function (req, res) {
+    dal.addIncome(req.body, function (err, data) {
+        res.send(data);
+    });
+});
+router.post('/removeIncome', function (req, res) {
+    dal.removeIncome(req.query.id, function (err, data) {
+        res.send(data._doc);
+    });
+});
+router.get('/getIncomeList', function (req, res) {
+    dal.getIncomeList(function (err, data) {
+        res.send(data);
+    });
+});
 
 module.exports = router;

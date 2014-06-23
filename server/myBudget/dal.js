@@ -13,12 +13,13 @@ db.once('open', function callback() {
     console.info('mongoose connection open!');
 });
 
+
+//-- expenses
 var Expense = mongoose.model('expense', {category: String, amount: Number, date: Date});
 
 exports.addExpense = function (expense, callback) {
-    var id = expense._id;
-    if (id) {
-        Expense.findByIdAndUpdate(id, expense, callback);
+    if (expense._id) {
+        Expense.findByIdAndUpdate(expense._id, expense, callback);
     } else {
         (new Expense(expense)).save(callback);
     }
@@ -40,3 +41,21 @@ exports.getCategoriesList = function (callback) {
     Expense.find().distinct('category', callback);
 };
 
+
+// - incomes
+var Income = mongoose.model('income', {category: String, amount: Number, date: Date});
+
+exports.addIncome = function (income, callback) {
+    if (income._id) {
+        Income.findByIdAndUpdate(income._id, income, callback);
+    } else {
+        (new Income(income)).save(callback);
+    }
+};
+
+exports.removeIncome = function (id, callback) {
+    Income.findByIdAndRemove(id, callback);
+};
+exports.getIncomeList = function (callback) {
+    Income.find(callback);
+};

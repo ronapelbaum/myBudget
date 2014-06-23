@@ -7,7 +7,7 @@ angular.module('myBudget_module').controller('expIncomeCtrl', ['$scope', '$http'
 
     var refreshList = function () {
         //get the income list
-        $http.get('/getAllRecords', {params: {table: 'income'}}).
+        $http.get('/getIncomeList').
             success(function (data) {
                 $scope.incomeList = data;
             }).
@@ -19,14 +19,14 @@ angular.module('myBudget_module').controller('expIncomeCtrl', ['$scope', '$http'
 
     $scope.save = function () {
         //add the income
-        $http.post('/addRecord', $scope.newIncome, {params: {table: 'income', id: $scope.newIncome.category}}).
+        $http.post('/addIncome', $scope.newIncome).
             success(function (data) {
                 refreshList();
             }).
             error(errorFunction);
     };
     $scope.remove = function (id) {
-        $http.post('/removeRecord', {}, {params: {table: 'income', id: id}}).
+        $http.post('/removeIncome', {}, {params: {id: id}}).
             success(function (data) {
                 refreshList();
             }).

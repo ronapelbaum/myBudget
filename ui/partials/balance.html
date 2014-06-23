@@ -4,11 +4,11 @@
     </div>
     <div class="panel-body" ng-click="details=!details">
         <h3>Balance: <span
-                class="label label-{{sumIncome-sumExpenses>=0?'success':'danger'}}">{{sumIncome-sumExpenses}}</span>
+                class="label label-{{sumIncome-sumExpenses>=0?'success':'danger'}}">{{sumIncome-sumExpenses | number:2}}</span>
         </h3>
     </div>
     <div class="panel-footer" ng-show="details">
-        <h4>Income: <span class="label label-success">{{sumIncome}}</span></h4>
-        <h4>Expenses: <span class="label label-danger">{{sumExpenses}}</span></h4>
+        <h4>Income: <span class="label label-success">{{sumIncome| number:2}}</span></h4>
+        <h4>Expenses: <span class="label label-danger">{{sumExpenses| number:2}}</span></h4>
     </div>
 </div>
