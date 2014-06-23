@@ -15,6 +15,7 @@
     <script src="js/expenses/edit-ctrl.js"></script>
     <script src="js/expenses/list-ctrl.js"></script>
     <script src="js/expenses/pivot-ctrl.js"></script>
+    <script src="js/expenses/income-ctrl.js"></script>
     <script src="js/expenses/bl/Pivot.js"></script>
     <script src="js/util/_util.js"></script>
     <script src="js/util/nav-drtv.js"></script>
@@ -26,7 +27,13 @@
 
 
 <h1 class="page-header">Expense Manager</h1>
-<nav-bar pages="[{name:'Add',route:'/'},{name:'List',route:'/list'},{name:'Pivot',route:'/pivot'}]"></nav-bar>
+<nav-bar pages="[
+{name:'Add',route:'/'},
+{name:'List',route:'/list'},
+{name:'Pivot',route:'/pivot'},
+{name:'Income',route:'/income'},
+{name:'Balance',route:'/balance'}
+]"></nav-bar>
 
 <div ng-view></div>
 
