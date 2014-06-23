@@ -15,7 +15,7 @@ db.once('open', function callback() {
 
 var Expense = mongoose.model('expense', {category: String, amount: Number, date: Date});
 
-exports.add = function (expense, callback) {
+exports.addExpense = function (expense, callback) {
     var id = expense._id;
     if (id) {
         Expense.findByIdAndUpdate(id, expense, callback);
@@ -24,19 +24,19 @@ exports.add = function (expense, callback) {
     }
 };
 
-exports.removeById = function (id, callback) {
+exports.removeExpense = function (id, callback) {
     Expense.findByIdAndRemove(id, callback);
 };
 
-exports.getById = function (id, callback) {
+exports.getExpense = function (id, callback) {
 //    Expense.find({_id: new ObjectId(id)}, callback);
     Expense.findById(id, callback);
 };
 
-exports.getExpenses = function (callback) {
+exports.getExpensesList = function (callback) {
     Expense.find(callback);
 };
-exports.getCategories = function (callback) {
+exports.getCategoriesList = function (callback) {
     Expense.find().distinct('category', callback);
 };
 

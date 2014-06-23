@@ -7,27 +7,27 @@ var router = express.Router();
 
 //--- server logic
 router.post('/addExpense', function (req, res) {
-    dal.add(req.body, function (err, data) {
+    dal.addExpense(req.body, function (err, data) {
         res.send(data);
     });
 });
 router.post('/removeExpense', function (req, res) {
-    dal.removeById(req.query.id, function (err, data) {
+    dal.removeExpense(req.query.id, function (err, data) {
         res.send(data._doc);
     });
 });
 router.get('/getExpense', function (req, res) {
-    dal.getById(req.query.id, function (err, data) {
+    dal.getExpense(req.query.id, function (err, data) {
         res.send(data._doc);
     });
 });
 router.get('/getExpensesList', function (req, res) {
-    dal.getExpenses(function (err, data) {
+    dal.getExpensesList(function (err, data) {
         res.send(data);
     });
 });
 router.get('/getCategoriesList', function (req, res) {
-    dal.getCategories(function (err, data) {
+    dal.getCategoriesList(function (err, data) {
         res.send(data);
     });
 });
