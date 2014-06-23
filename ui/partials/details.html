@@ -8,14 +8,15 @@
     <input type="number" class="form-control" placeholder="amount" ng-model="expense.amount" ng-required="true">
 
     <h4>Date</h4>
-    <section class="input-group">
-        <input type="text" class="form-control pull-right" placeholder="date" ng-model="expense.date" ng-required="true"
-               datepicker-popup="dd.MM.yyyy" is-open="opened">
-        <span class="input-group-btn right">
-                <button type="button" class="btn btn-default " ng-click="open($event)"><i
-                        class="glyphicon glyphicon-calendar"></i></button>
+    <div class="input-group">
+        <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open($event)">
+                    <i class="glyphicon glyphicon-calendar"></i>
+                </button>
               </span>
-    </section>
+        <input type="text" class="form-control" placeholder="date" ng-model="expense.date" ng-required="true"
+               datepicker-popup="dd.MM.yyyy" is-open="opened">
+    </div>
     <br/>
     <section class="btn-panel pull-right">
         <button type="button" class="btn btn-lg btn-danger" ng-click="remove()" ng-show="expense.id">Delete</button>
