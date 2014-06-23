@@ -1,5 +1,14 @@
-<div>
-    <h3>Your Balance in {{today|date:'MMMM'}}: {{sumIncome-sumExpenses}}</h3>
-    <h5>Monthly Income: {{sumIncome}}</h5>
-    <h5>{{today|date:'MMMM'}} Expenses: {{sumExpenses}}</h5>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3>{{today|date:'MMMM yyyy'}}</h3>
+    </div>
+    <div class="panel-body" ng-click="details=!details">
+        <h3>Balance: <span
+                class="label label-{{sumIncome-sumExpenses>=0?'success':'danger'}}">{{sumIncome-sumExpenses}}</span>
+        </h3>
+    </div>
+    <div class="panel-footer" ng-show="details">
+        <h4>Income: <span class="label label-success">{{sumIncome}}</span></h4>
+        <h4>Expenses: <span class="label label-danger">{{sumExpenses}}</span></h4>
+    </div>
 </div>
