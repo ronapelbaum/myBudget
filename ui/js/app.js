@@ -28,6 +28,14 @@ expenseApp.config(['$routeProvider',
                 templateUrl: 'partials/pivot.html',
                 controller: 'expensePivotCtrl'
             }).
+            when('/income', {
+                templateUrl: 'partials/income.html',
+                controller: 'expenseIncomeCtrl'
+            }).
+            when('/balance', {
+                templateUrl: 'partials/balance.html',
+                controller: 'expensesBalanceCtrl'
+            }).
             otherwise({
                 redirectTo: '/'
             });
