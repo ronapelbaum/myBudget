@@ -7,34 +7,34 @@ var appModules = [
     'util_module',
     'ui.bootstrap'
 ];
-var expenseApp = angular.module('expenseApp', appModules);
+var expenses_app = angular.module('expenses_app', appModules);
 
-expenseApp.config(['$routeProvider',
+expenses_app.config(['$routeProvider',
     function ($routeProvider) {
         $routeProvider.
             when('/', {
                 templateUrl: 'partials/details.html',
-                controller: 'editExpenseCtrl'
+                controller: 'expEditCtrl'
             }).
             when('/edit/:id', {
                 templateUrl: 'partials/details.html',
-                controller: 'editExpenseCtrl'
+                controller: 'expEditCtrl'
             }).
             when('/list', {
                 templateUrl: 'partials/list.html',
-                controller: 'expenseListCtrl'
+                controller: 'expListCtrl'
             }).
             when('/pivot', {
                 templateUrl: 'partials/pivot.html',
-                controller: 'expensePivotCtrl'
+                controller: 'expPivotCtrl'
             }).
             when('/income', {
                 templateUrl: 'partials/income.html',
-                controller: 'expenseIncomeCtrl'
+                controller: 'expIncomeCtrl'
             }).
             when('/balance', {
                 templateUrl: 'partials/balance.html',
-                controller: 'expensesBalanceCtrl'
+                controller: 'expBalanceCtrl'
             }).
             otherwise({
                 redirectTo: '/'

@@ -1,7 +1,7 @@
 /**
  * Created by apelbaur on 6/22/2014.
  */
-angular.module('expenses_module').controller('expenseIncomeCtrl', ['$scope', '$http', function ($scope, $http) {
+angular.module('expenses_module').controller('expIncomeCtrl', ['$scope', '$http', function ($scope, $http) {
     $scope.newIncome = {};
     $scope.incomeList = [];
 

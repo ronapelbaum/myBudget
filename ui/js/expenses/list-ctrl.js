@@ -1,7 +1,7 @@
 /**
  * Created by apelbaur on 6/19/2014.
  */
-angular.module('expenses_module').controller('expenseListCtrl', ['$scope', '$http', '$location', function ($scope, $http, $location) {
+angular.module('expenses_module').controller('expListCtrl', ['$scope', '$http', '$location', function ($scope, $http, $location) {
     $scope.expensesList = [];
     $http.get('/getAllRecords', {params: {table: 'expenses'}}).
         success(function (data) {

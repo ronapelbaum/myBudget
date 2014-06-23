@@ -1,7 +1,7 @@
 /**
  * Created by apelbaur on 6/19/2014.
  */
-angular.module('expenses_module').controller('editExpenseCtrl', ['$scope', '$http', '$location', '$routeParams', '$filter', function ($scope, $http, $location, $routeParams, $filter) {
+angular.module('expenses_module').controller('expEditCtrl', ['$scope', '$http', '$location', '$routeParams', '$filter', function ($scope, $http, $location, $routeParams, $filter) {
     $scope.expense = {};
     $scope.categories = [];
     //check if we are in edit mode
