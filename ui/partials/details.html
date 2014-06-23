@@ -1,7 +1,7 @@
-<form>
+<form class="jumbotron">
     <h4>Category</h4>
     <input type="text" class="form-control" placeholder="category" ng-model="expense.category" ng-required="true"
-           typeahead="category.name for category in categories | filter:$viewValue | limitTo:8"
+           typeahead="category for category in categories | filter:$viewValue | limitTo:8"
            autofocus>
 
     <h4>Amount</h4>
@@ -19,7 +19,7 @@
     </div>
     <br/>
     <section class="btn-panel pull-right">
-        <button type="button" class="btn btn-lg btn-danger" ng-click="remove()" ng-show="expense.id">Delete</button>
+        <button type="button" class="btn btn-lg btn-danger" ng-click="remove()" ng-show="expense._id">Delete</button>
         <button type="submit" class="btn btn-lg btn-primary" ng-click="save()">Save</button>
     </section>
 </form>

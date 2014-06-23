@@ -4,7 +4,7 @@
 angular.module('myBudget_module').controller('expPivotCtrl', ['$scope', '$http', '$filter' , function ($scope, $http, $filter) {
     var expenses = [];
     $scope.pivot = {};
-    $http.get('/getAllRecords', {params: {table: 'expenses'}}).
+    $http.get('/getExpensesList').
         success(function (data) {
             expenses = data;
             $scope.pivot = new Pivot(expenses, 'category', undefined, 'date', function (date) {

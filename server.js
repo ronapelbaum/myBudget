@@ -8,7 +8,7 @@
 var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
-var router = require('./server/router');
+var router = require('./server/myBudget/bl');
 
 
 //--- express use
@@ -16,9 +16,8 @@ var app = express();
 app.use(bodyParser());
 app.use(express.static(path.join(__dirname, '/ui')));
 // simple logger
-app.use(function(req, res, next){
-    console.log('%s %s', req.method, req.url );
-    console.log(req.body);
+app.use(function (req, res, next) {
+    console.log('req: %s %s', req.method, req.url);
     next();
 });
 app.use(function (err, req, res, next) {

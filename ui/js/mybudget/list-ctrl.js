@@ -3,7 +3,7 @@
  */
 angular.module('myBudget_module').controller('expListCtrl', ['$scope', '$http', '$location', function ($scope, $http, $location) {
     $scope.expensesList = [];
-    $http.get('/getAllRecords', {params: {table: 'expenses'}}).
+    $http.get('/getExpensesList').
         success(function (data) {
             $scope.expensesList = data;
         }).

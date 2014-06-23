@@ -7,8 +7,7 @@ angular.module('myBudget_module').controller('expEditCtrl', ['$scope', '$http', 
     //check if we are in edit mode
     if ($routeParams.id) {
         //get record to edit
-        console.log('id: ' + $routeParams.id);
-        $http.get('/getRecord', {params: {table: 'expenses', id: $routeParams.id}}).
+        $http.get('/getExpense', {params: {id: $routeParams.id}}).
             success(function (data) {
                 $scope.expense = data;
             }).
@@ -18,29 +17,23 @@ angular.module('myBudget_module').controller('expEditCtrl', ['$scope', '$http', 
         $scope.expense.date = new Date();
     }
     //get the categories for 'typeahead'
-    $http.get('/getAllRecords', {params: {table: 'categories'}}).
+    $http.get('/getCategoriesList').
         success(function (data) {
             $scope.categories = data;
         }).
         error(errorFunction);
 
     $scope.save = function () {
-        $scope.expense.id = $scope.expense.id || (new Date).getTime();
         $scope.expense.amount = $scope.expense.amount || 0;
         //add the expense
-        $http.post('/addRecord', $scope.expense, {params: {table: 'expenses', id: $scope.expense.id}}).
-            success(function (data) {
-            }).
-            error(errorFunction);
-        //add the category
-        $http.post('/addRecord', {name: $scope.expense.category}, {params: {table: 'categories', id: $scope.expense.category}}).
+        $http.post('/addExpense', $scope.expense).
             success(function (data) {
             }).
             error(errorFunction);
         $location.path('/list');
     };
     $scope.remove = function () {
-        $http.post('/removeRecord', {}, {params: {table: 'expenses', id: $routeParams.id}}).
+        $http.post('/removeExpense', {}, {params: {id: $routeParams.id}}).
             success(function (data) {
                 $scope.expense = data;
             }).
