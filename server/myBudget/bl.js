@@ -31,6 +31,11 @@ router.get('/getCategoriesList', function (req, res) {
         res.send(data);
     });
 });
+router.get('/getExpensesSum', function (req, res) {
+    dal.getExpensesSum(req.query.filter, function (err, data) {
+        res.send(data[0]);
+    });
+});
 //--- income
 router.post('/addIncome', function (req, res) {
     dal.addIncome(req.body, function (err, data) {
@@ -45,6 +50,11 @@ router.post('/removeIncome', function (req, res) {
 router.get('/getIncomeList', function (req, res) {
     dal.getIncomeList(function (err, data) {
         res.send(data);
+    });
+});
+router.get('/getIncomeSum', function (req, res) {
+    dal.getIncomeSum(req.query.filter, function (err, data) {
+        res.send(data[0]);
     });
 });
 

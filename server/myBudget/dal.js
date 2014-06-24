@@ -40,6 +40,16 @@ exports.getExpensesList = function (callback) {
 exports.getCategoriesList = function (callback) {
     Expense.find().distinct('category', callback);
 };
+exports.getExpensesSum = function (filter, callback) {
+    console.log(filter);
+    if (filter) {
+        filter = JSON.parse(filter);
+        Expense.aggregate([
+            {$match: {date: {$gte: new Date(filter.start), $lt: new Date(filter.end)}}},
+            {$group: {_id: 0, total: {$sum: '$amount'}}}
+        ], callback);
+    }
+};
 
 
 // - incomes
@@ -52,10 +62,12 @@ exports.addIncome = function (income, callback) {
         (new Income(income)).save(callback);
     }
 };
-
 exports.removeIncome = function (id, callback) {
     Income.findByIdAndRemove(id, callback);
 };
 exports.getIncomeList = function (callback) {
     Income.find(callback);
+};
+exports.getIncomeSum = function (filter, callback) {
+    Income.aggregate({$group: {_id: 0, total: {$sum: '$amount'}}}, callback);
 };

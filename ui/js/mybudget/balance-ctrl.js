@@ -2,21 +2,22 @@
  * Created by apelbaur on 6/22/2014.
  */
 angular.module('myBudget_module').controller('expBalanceCtrl', ['$scope', '$http', function ($scope, $http) {
-    $scope.today = new Date();
+    var today = new Date();
+    $scope.today = today;
     $scope.sumIncome = 0;
     $scope.sumExpenses = 0;
-    $http.get('/getAllRecords', {params: {table: 'expenses'}}).
+    var filter = {
+        start: new Date(today.getFullYear(), today.getMonth(), 1),
+        end: new Date(today.getFullYear(), today.getMonth() + 1, 1)
+    };
+    $http.get('/getExpensesSum', {params: {filter: filter}}).
         success(function (data) {
-            for (var i = 0; i < data.length; i++) {
-                $scope.sumExpenses += data[i].amount;
-            }
+            $scope.sumExpenses = data.total;
         }).
         error(errorFunction);
-    $http.get('/getAllRecords', {params: {table: 'income'}}).
+    $http.get('/getIncomeSum').
         success(function (data) {
-            for (var i = 0; i < data.length; i++) {
-                $scope.sumIncome += data[i].amount;
-            }
+            $scope.sumIncome = data.total;
         }).
         error(errorFunction);
 
