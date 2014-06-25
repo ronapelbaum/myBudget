@@ -17,37 +17,50 @@ db.once('open', function callback() {
 //-- expenses
 var Expense = mongoose.model('expense', {category: String, amount: Number, date: Date});
 
-exports.addExpense = function (expense, callback) {
+exports.addExpense = function (expense, dalCallback) {
+    var myCallback = function (err, data) {
+        dalCallback(data)
+    };
     if (expense._id) {
-        Expense.findByIdAndUpdate(expense._id, expense, callback);
+        Expense.findByIdAndUpdate(expense._id, expense, myCallback);
     } else {
-        (new Expense(expense)).save(callback);
+        (new Expense(expense)).save(myCallback);
     }
 };
 
-exports.removeExpense = function (id, callback) {
-    Expense.findByIdAndRemove(id, callback);
+exports.removeExpense = function (id, dalCallback) {
+    Expense.findByIdAndRemove(id, function (err, data) {
+        dalCallback(data._doc)
+    });
 };
 
-exports.getExpense = function (id, callback) {
-//    Expense.find({_id: new ObjectId(id)}, callback);
-    Expense.findById(id, callback);
+exports.getExpense = function (id, dalCallback) {
+//    Expense.find({_id: new ObjectId(id)}, dalCallback);
+    Expense.findById(id, function (err, data) {
+        dalCallback(data._doc)
+    });
 };
 
-exports.getExpensesList = function (callback) {
-    Expense.find(callback);
+exports.getExpensesList = function (dalCallback) {
+    Expense.find(function (err, data) {
+        dalCallback(data)
+    });
 };
-exports.getCategoriesList = function (callback) {
-    Expense.find().distinct('category', callback);
+exports.getCategoriesList = function (dalCallback) {
+    Expense.find().distinct('category', function (err, data) {
+        dalCallback(data)
+    });
 };
-exports.getExpensesSum = function (filter, callback) {
+exports.getExpensesSum = function (filter, dalCallback) {
     console.log(filter);
     if (filter) {
         filter = JSON.parse(filter);
         Expense.aggregate([
             {$match: {date: {$gte: new Date(filter.start), $lt: new Date(filter.end)}}},
             {$group: {_id: 0, total: {$sum: '$amount'}}}
-        ], callback);
+        ], function (err, data) {
+            dalCallback(data[0])
+        });
     }
 };
 
@@ -55,19 +68,30 @@ exports.getExpensesSum = function (filter, callback) {
 // - incomes
 var Income = mongoose.model('income', {category: String, amount: Number, date: Date});
 
-exports.addIncome = function (income, callback) {
+exports.addIncome = function (income, dalCallback) {
+    var myCallback = function (err, data) {
+        dalCallback(data)
+    };
     if (income._id) {
-        Income.findByIdAndUpdate(income._id, income, callback);
+        Income.findByIdAndUpdate(income._id, income, myCallback);
     } else {
-        (new Income(income)).save(callback);
+        (new Income(income)).save(myCallback);
     }
 };
-exports.removeIncome = function (id, callback) {
-    Income.findByIdAndRemove(id, callback);
+exports.removeIncome = function (id, dalCallback) {
+    Income.findByIdAndRemove(id, function (err, data) {
+        dalCallback(data._doc)
+    });
 };
-exports.getIncomeList = function (callback) {
-    Income.find(callback);
+exports.getIncomeList = function (dalCallback) {
+    Income.find(function (err, data) {
+        dalCallback(data)
+    });
 };
-exports.getIncomeSum = function (filter, callback) {
-    Income.aggregate({$group: {_id: 0, total: {$sum: '$amount'}}}, callback);
+exports.getIncomeSum = function (filter, dalCallback) {
+    Income.aggregate([
+        {$group: {_id: 0, total: {$sum: '$amount'}}}
+    ], function (err, data) {
+        dalCallback(data[0])
+    });
 };

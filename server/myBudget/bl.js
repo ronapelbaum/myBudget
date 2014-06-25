@@ -7,54 +7,54 @@ var router = express.Router();
 
 //--- server logic
 router.post('/addExpense', function (req, res) {
-    dal.addExpense(req.body, function (err, data) {
+    dal.addExpense(req.body, function (data) {
         res.send(data);
     });
 });
 router.post('/removeExpense', function (req, res) {
-    dal.removeExpense(req.query.id, function (err, data) {
-        res.send(data._doc);
+    dal.removeExpense(req.query.id, function (data) {
+        res.send(data);
     });
 });
 router.get('/getExpense', function (req, res) {
-    dal.getExpense(req.query.id, function (err, data) {
-        res.send(data._doc);
+    dal.getExpense(req.query.id, function (data) {
+        res.send(data);
     });
 });
 router.get('/getExpensesList', function (req, res) {
-    dal.getExpensesList(function (err, data) {
+    dal.getExpensesList(function (data) {
         res.send(data);
     });
 });
 router.get('/getCategoriesList', function (req, res) {
-    dal.getCategoriesList(function (err, data) {
+    dal.getCategoriesList(function (data) {
         res.send(data);
     });
 });
 router.get('/getExpensesSum', function (req, res) {
-    dal.getExpensesSum(req.query.filter, function (err, data) {
-        res.send(data[0]);
+    dal.getExpensesSum(req.query.filter, function (data) {
+        res.send(data);
     });
 });
 //--- income
 router.post('/addIncome', function (req, res) {
-    dal.addIncome(req.body, function (err, data) {
+    dal.addIncome(req.body, function (data) {
         res.send(data);
     });
 });
 router.post('/removeIncome', function (req, res) {
-    dal.removeIncome(req.query.id, function (err, data) {
-        res.send(data._doc);
+    dal.removeIncome(req.query.id, function (data) {
+        res.send(data);
     });
 });
 router.get('/getIncomeList', function (req, res) {
-    dal.getIncomeList(function (err, data) {
+    dal.getIncomeList(function (data) {
         res.send(data);
     });
 });
 router.get('/getIncomeSum', function (req, res) {
-    dal.getIncomeSum(req.query.filter, function (err, data) {
-        res.send(data[0]);
+    dal.getIncomeSum(req.query.filter, function (data) {
+        res.send(data);
     });
 });
 
