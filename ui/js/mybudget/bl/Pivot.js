@@ -9,8 +9,8 @@ function Pivot(records, rowsGroupBy, rowsFilter, columnsGroupBy, columnsFilter, 
     for (var i = 0; i < records.length; i++) {
         var record = records[i];
 
-        var row = rowsFilter ? rowsFilter(record[rowsGroupBy]) : record[rowsGroupBy];
-        var column = columnsFilter ? columnsFilter(record[columnsGroupBy]) : record[columnsGroupBy];
+        var row = record[rowsGroupBy] ? (rowsFilter ? rowsFilter(record[rowsGroupBy]) : record[rowsGroupBy]) : rowsGroupBy;
+        var column = record[columnsGroupBy] ? (columnsFilter ? columnsFilter(record[columnsGroupBy]) : record[columnsGroupBy]) : columnsGroupBy;
         var value = record[valuesGroupBy];
 
         if (!this.table[row]) {
