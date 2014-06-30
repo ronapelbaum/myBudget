@@ -63,6 +63,28 @@ exports.getExpensesSum = function (filter, dalCallback) {
         });
     }
 };
+exports.getExpensesPivot = function (pivotBy, dalCallback) {
+    console.log(pivotBy);
+    //pivot
+    //db.expenses.aggregate([{$group:{_id:'$category',total:{$sum:'$amount'}}},{$project:{_id:0,cat:'$_id',total:"$total"}}])
+    //
+    //db.expenses.aggregate([{$project:{_id:0,category:'$category',amount:'$amount',mon:{$month:'$date'}}},{$group:{_id:{cat:'$category', month:"$mon"},total:{$sum:'$amount'}}}])
+    Expense.aggregate([
+        {$project: {_id: 0, category: '$category', year_month: {y: {$year: '$date'}, m: {$month: '$date'}}, amount: '$amount'}},
+        {$group: {_id: {c: '$category', ym: "$year_month"}, sum: {$sum: '$amount'}}},
+        {$project: {_id: 0, category: '$_id.c', month: '$_id.ym', total: '$sum'}}
+    ], function (err, data) {
+        var pivot = {};
+        for (var i = 0; i < data.length; i++) {
+            var current = data[i];
+            pivot[current.category] = pivot[current.category] || {};
+            var date = new Date(current.month.y, current.month.m, 1);
+            pivot[current.category][ date] = current.total;
+        }
+        console.log(pivot);
+        dalCallback(pivot)
+    });
+};
 
 
 // - incomes

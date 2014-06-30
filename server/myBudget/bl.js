@@ -36,6 +36,12 @@ router.get('/getExpensesSum', function (req, res) {
         res.send(data);
     });
 });
+router.get('/getExpensesPivot', function (req, res) {
+    dal.getExpensesPivot(req.query.pivotBy, function (data) {
+        res.send(data);
+    })
+});
+
 //--- income
 router.post('/addIncome', function (req, res) {
     dal.addIncome(req.body, function (data) {
