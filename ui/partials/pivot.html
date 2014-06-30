@@ -1,5 +1,12 @@
 <h4>Query</h4>
 <input ng-model="filterProp" class="form-control">
+<h4>
+    Pivot by:
+<span class="btn-group">
+    <label class="btn btn-primary" ng-model="pivotBy.category" btn-checkbox>Category</label>
+    <label class="btn btn-primary" ng-model="pivotBy.month" btn-checkbox>Month</label>
+</span>
+</h4>
 <br/>
 <table class="table">
     <tr>
