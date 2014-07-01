@@ -6,10 +6,7 @@ angular.module('myBudget_module').controller('expBalanceCtrl', ['$scope', '$http
     $scope.today = today;
     $scope.sumIncome = 0;
     $scope.sumExpenses = 0;
-    var filter = {
-        start: new Date(today.getFullYear(), today.getMonth(), 1),
-        end: new Date(today.getFullYear(), today.getMonth() + 1, 1)
-    };
+    var filter = DateUtils.getMonthOffset(today);
     $http.get('/getExpensesSum', {params: {filter: filter}}).
         success(function (data) {
             $scope.sumExpenses = data.total;
