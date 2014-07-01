@@ -1,5 +1,7 @@
-<h4>Query</h4>
-<input ng-model="filterProp" class="form-control">
+<h4>Query
+    <input ng-model="filterProp" class="form-inline">
+<select class="dropdown" ng-model="selectedTimeFilter" ng-options="timeFilter.name for timeFilter in timeFilters"></select>
+</h4>
 <br/>
 <table class="table table-hover">
     <thead>

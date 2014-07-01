@@ -41,10 +41,23 @@ exports.getExpense = function (id, dalCallback) {
     });
 };
 
-exports.getExpensesList = function (dalCallback) {
-    Expense.find(function (err, data) {
-        dalCallback(data)
-    });
+exports.getExpensesList = function (filter, dalCallback) {
+    if (filter) {
+        filter = JSON.parse(filter);
+        Expense.find(
+            {date: {$gte: new Date(filter.start), $lt: new Date(filter.end)}},
+            function (err, data) {
+                var res = [];
+                for (var i = 0; i < data.length; i++) {
+                    res.push(data[i]._doc);
+                }
+                dalCallback(res);
+            });
+    } else {
+        Expense.find(function (err, data) {
+            dalCallback(data)
+        });
+    }
 };
 exports.getCategoriesList = function (dalCallback) {
     Expense.find().distinct('category', function (err, data) {

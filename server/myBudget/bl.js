@@ -22,7 +22,7 @@ router.get('/getExpense', function (req, res) {
     });
 });
 router.get('/getExpensesList', function (req, res) {
-    dal.getExpensesList(function (data) {
+    dal.getExpensesList(req.query.filter, function (data) {
         res.send(data);
     });
 });
