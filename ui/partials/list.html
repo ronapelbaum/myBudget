@@ -8,11 +8,11 @@
 </div>
 <br/>
 <table class="table table-hover">
-    <thead>
+    <thead class="h4">
     <tr>
-        <td class="clickable" ng-click="setOrder('date')">Date</td>
-        <td class="clickable" ng-click="setOrder('category')">Category</td>
-        <td>Amount</td>
+        <td class="clickable" ng-click="setOrder('date')"><caret ng-show="orderProp.indexOf('date')>=0" up="orderProp.indexOf('-')>=0"></caret>&nbsp;Date</td>
+        <td class="clickable" ng-click="setOrder('category')"><caret ng-show="orderProp.indexOf('category')>=0" up="orderProp.indexOf('-')>=0"></caret>&nbsp;Category</td>
+        <td class="clickable" ng-click="setOrder('amount')"><caret ng-show="orderProp.indexOf('amount')>=0" up="orderProp.indexOf('-')>=0"></caret>&nbsp;Amount</td>
     </tr>
     </thead>
     <tbody>

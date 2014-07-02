@@ -7,7 +7,7 @@ angular.module('myBudget_module').controller('expListCtrl', ['$scope', '$http', 
         {filter: DateUtils.getMonthOffset(today), name: 'This Month'},
         {filter: DateUtils.getMonthOffset(today, -1), name: 'Previous Month'},
         {filter: DateUtils.getYearOffset(today), name: 'This Year'},
-        {filter: DateUtils.getYearOffset(today,-1), name: 'Previous Year'}
+        {filter: DateUtils.getYearOffset(today, -1), name: 'Previous Year'}
     ];
     $scope.selectedTimeFilter = $scope.timeFilters[0];
     $scope.expensesList = [];
@@ -22,7 +22,7 @@ angular.module('myBudget_module').controller('expListCtrl', ['$scope', '$http', 
     $scope.$watch('selectedTimeFilter', getExpenses);
 
     $scope.setOrder = function (orderProp) {
-        if ($scope.orderProp && $scope.orderProp.indexOf('-') < 0) {
+        if ($scope.orderProp && $scope.orderProp === orderProp && $scope.orderProp.indexOf('-') < 0) {
             $scope.orderProp = '-' + orderProp;
         } else {
             $scope.orderProp = orderProp;
