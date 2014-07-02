@@ -10,13 +10,13 @@
 <table class="table table-hover">
     <thead class="h4">
     <tr>
-        <td class="clickable" ng-click="setOrder('date')"><caret ng-show="orderProp.indexOf('date')>=0" up="orderProp.indexOf('-')>=0"></caret>&nbsp;Date</td>
-        <td class="clickable" ng-click="setOrder('category')"><caret ng-show="orderProp.indexOf('category')>=0" up="orderProp.indexOf('-')>=0"></caret>&nbsp;Category</td>
-        <td class="clickable" ng-click="setOrder('amount')"><caret ng-show="orderProp.indexOf('amount')>=0" up="orderProp.indexOf('-')>=0"></caret>&nbsp;Amount</td>
+        <td class="clickable" ng-click="setOrder('date')"><caret ng-show="orderProp==='date'" up="reverseSort==='-'"></caret>&nbsp;Date</td>
+        <td class="clickable" ng-click="setOrder('category')"><caret ng-show="orderProp==='category'" up="reverseSort==='-'"></caret>&nbsp;Category</td>
+        <td class="clickable" ng-click="setOrder('amount')"><caret ng-show="orderProp==='amount'" up="reverseSort==='-'"></caret>&nbsp;Amount</td>
     </tr>
     </thead>
     <tbody>
-    <tr ng-repeat="expense in expensesList | orderBy : orderProp | filter: search "
+    <tr ng-repeat="expense in expensesList | orderBy : reverseSort + orderProp | filter: search "
         ng-mouseenter="show = true" ng-mouseleave="show = false">
         <td>{{expense.date| date : 'dd-MM-yyyy'}}</td>
         <td>{{expense.category}}</td>
