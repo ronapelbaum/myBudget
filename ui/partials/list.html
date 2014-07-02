@@ -1,7 +1,11 @@
-<h4>Search Category:
+<div class="h4">
+    Search Category:
     <input ng-model="search.category" class="form-inline">
-<select class="dropdown" ng-model="selectedTimeFilter" ng-options="timeFilter.name for timeFilter in timeFilters"></select>
-</h4>
+    &nbsp;
+    Time Period:
+    <select class="dropdown" ng-model="selectedTimeFilter"
+            ng-options="timeFilter.name for timeFilter in timeFilters"></select>
+</div>
 <br/>
 <table class="table table-hover">
     <thead>
@@ -17,7 +21,7 @@
         <td>{{expense.date| date : 'dd-MM-yyyy'}}</td>
         <td>{{expense.category}}</td>
         <td>{{expense.amount}} <span class="glyphicon glyphicon-pencil pull-right" ng-show="show"
-                                      ng-click="edit(expense._id)"></span></td>
+                                     ng-click="edit(expense._id)"></span></td>
     </tr>
     </tbody>
 </table>
