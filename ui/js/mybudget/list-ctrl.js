@@ -21,9 +21,6 @@ angular.module('myBudget_module').controller('expListCtrl', ['$scope', '$http', 
     getExpenses();
     $scope.$watch('selectedTimeFilter', getExpenses);
 
-    $scope.setFilter = function (filterProp) {
-        $scope.filterProp = $scope.filterProp ? undefined : filterProp;
-    };
     $scope.setOrder = function (orderProp) {
         if ($scope.orderProp && $scope.orderProp.indexOf('-') < 0) {
             $scope.orderProp = '-' + orderProp;
