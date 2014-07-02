@@ -18,12 +18,15 @@ angular.module('myBudget_module').controller('expListCtrl', ['$scope', '$http', 
             }).
             error(errorFunction);
     }
+
     getExpenses();
     $scope.$watch('selectedTimeFilter', getExpenses);
 
-    $scope.setOrder = function (orderProp) {
-        $scope.reverseSort = $scope.orderProp === orderProp && $scope.reverseSort !== '-' ? '-' : '';
-        $scope.orderProp = orderProp;
+    $scope.reverse = false;
+    $scope.order = undefined;
+    $scope.setOrder = function (order) {
+        $scope.reverse = $scope.order === order &&! $scope.reverse ;
+        $scope.order = order;
     };
 
 
