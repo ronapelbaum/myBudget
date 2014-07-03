@@ -8,7 +8,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr ng-repeat="row in data.rows | orderBy : order : reverse ">
+    <tr class="active clickable" ng-repeat="row in data.rows | orderBy : order : reverse " ng-click="rowClicked(row)">
         <td ng-repeat="column in data.columns">{{ row[column.key]| dynamicFilter:column.filter}}</td>
     </tr>
     </tbody>

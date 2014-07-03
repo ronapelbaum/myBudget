@@ -6,15 +6,20 @@ angular.module('util_module').directive('sortableTable', [function () {
         restrict: 'E',
         templateUrl: 'js/util/sortable-tpl.html',
         scope: {
-            data: '='
+            data: '=',
+            onRowClick:'='
         },
-        controller: ['$scope',  function ($scope) {
+        controller: ['$scope', '$parse',  function ($scope,$parse) {
             $scope.reverse = false;
             $scope.order = undefined;
             $scope.setOrder = function (order) {
                 $scope.reverse = $scope.order === order &&! $scope.reverse ;
                 $scope.order = order;
             };
+
+            $scope.rowClicked = function(row){
+                $parse($scope.onRowClick(row));
+            }
         }]
     };
 }]);
