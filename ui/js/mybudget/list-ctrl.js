@@ -10,11 +10,15 @@ angular.module('myBudget_module').controller('expListCtrl', ['$scope', '$http', 
         {filter: DateUtils.getYearOffset(today, -1), name: 'Previous Year'}
     ];
     $scope.selectedTimeFilter = $scope.timeFilters[0];
-    $scope.expensesList = [];
+    $scope.expensesList = {columns:[
+        {name:'Date',key:'date', filter:{name:'date', params:'dd/MM/yyyy'}},
+        {name:'Category',key:'category'},
+        {name:'Amount',key:'amount'}
+        ]};
     function getExpenses() {
         $http.get('/getExpensesList', {params: $scope.selectedTimeFilter}).
             success(function (data) {
-                $scope.expensesList = data;
+                $scope.expensesList.rows = data;
             }).
             error(errorFunction);
     }
@@ -30,8 +34,8 @@ angular.module('myBudget_module').controller('expListCtrl', ['$scope', '$http', 
     };
 
 
-    $scope.edit = function (id) {
-        $location.path('/edit/' + id);
+    $scope.edit = function (expense) {
+        $location.path('/edit/' + expense._id);
     }
 
 } ]);

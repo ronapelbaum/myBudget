@@ -6,31 +6,4 @@
     <select class="dropdown" ng-model="selectedTimeFilter"
             ng-options="timeFilter.name for timeFilter in timeFilters"></select>
 </div>
-<br/>
-<table class="table table-hover">
-    <thead class="h4">
-    <tr>
-        <td class="clickable" ng-click="setOrder('date')">
-            <caret ng-show="order==='date'" up="reverse"></caret>
-            &nbsp;Date
-        </td>
-        <td class="clickable" ng-click="setOrder('category')">
-            <caret ng-show="order==='category'" up="reverse"></caret>
-            &nbsp;Category
-        </td>
-        <td class="clickable" ng-click="setOrder('amount')">
-            <caret ng-show="order==='amount'" up="reverse"></caret>
-            &nbsp;Amount
-        </td>
-    </tr>
-    </thead>
-    <tbody>
-    <tr ng-repeat="expense in expensesList | orderBy:order:reverse | filter: search "
-        ng-mouseenter="show = true" ng-mouseleave="show = false">
-        <td>{{expense.date| date : 'dd-MM-yyyy'}}</td>
-        <td>{{expense.category}}</td>
-        <td>{{expense.amount}} <span class="glyphicon glyphicon-pencil pull-right" ng-show="show"
-                                     ng-click="edit(expense._id)"></span></td>
-    </tr>
-    </tbody>
-</table>
+<sortable-table data="expensesList" on-row-click="edit"></sortable-table>
