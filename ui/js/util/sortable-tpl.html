@@ -1,0 +1,15 @@
+<table class="table table-hover">
+    <thead class="h4">
+    <tr>
+        <td ng-repeat="column in data.columns" class="clickable" ng-click="setOrder(column.key)">
+            <caret ng-show="order===column.key" up="reverse">&nbsp;</caret>
+            {{column.name}}
+        </td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="row in data.rows | orderBy : order : reverse ">
+        <td ng-repeat="column in data.columns">{{ row[column.key]| dynamicFilter:column.filter}}</td>
+    </tr>
+    </tbody>
+</table>
