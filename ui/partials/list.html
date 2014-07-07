@@ -4,6 +4,6 @@
     &nbsp;
     Time Period:
     <select class="dropdown" ng-model="selectedTimeFilter"
-            ng-options="timeFilter.name for timeFilter in timeFilters"></select>
+            ng-options="timeFilter.name for timeFilter in timeFilters track by timeFilter.name"></select>
 </div>
 <sortable-table data="expensesList" on-row-click="edit"></sortable-table>
